@@ -30,7 +30,7 @@ This project is designed to facilitate the precise control of servo motors conne
 ### Arduino Setup
 1. Ensure the <Servo.h> library is available in your Arduino IDE. This library is typically included by default, but if it's missing, you can download it via the Library Manager in the Arduino IDE.
 2. Connect the servo motors and sensors to their designated pins on the Arduino as specified.
-3. Open the Capstone_P3.ino sketch in the Arduino IDE.
+3. Open the Phantom.ino sketch in the Arduino IDE.
 4. Compile and upload the sketch to your Arduino board.
    
 ### Python Environment Setup
