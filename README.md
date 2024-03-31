@@ -18,7 +18,7 @@ This project is designed to facilitate the precise control of servo motors conne
   Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
 - **Pressure Sensors**: Connected to analog pins A0, A1, and A2 for pressure measurement.
   Specs : 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range
-  Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0- 10psi/0P2P4PL7318L5
+  Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5
 
 ### Software
 - **Arduino IDE**: For compiling and uploading the Arduino sketch.
