@@ -10,13 +10,13 @@ This project is designed to facilitate the precise control of servo motors conne
 
 ### Hardware
 - **Arduino Uno**
-- **3 Servo Motors**: For simulating variations in physical parameters, connected to PWM pins D3 (Servo 1), D5 (Servo 2), and D6 (Servo 3).
+- **3 Servo Motors (PV, CR1, CR2)**: For simulating variations in physical parameters, connected to PWM pins D3 (Servo 1), D5 (Servo 2), and D6 (Servo 3).
   Specs : FR5311M Digital Servo / Operating Voltage: 4.8V-8.4V / 13.8 kg-cm (7.4V)
   Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
-- **Flow Sensors**: Connected to digital pins D2, D4, and D8 for flow rate monitoring.
+- **Flow Sensors (FL1, FL2, FL3)**: Connected to digital pins D2, D4, and D8 for flow rate monitoring.
   Specs : YF-S401 / 0.3-6 L/min / ±5% FS / 5880 pulses/L 
   Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
-- **Pressure Sensors**: Connected to analog pins A0, A1, and A2 for pressure measurement.
+- **Pressure Sensors (P1, P2, P3)**: Connected to analog pins A0, A1, and A2 for pressure measurement.
   Specs : 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range
   Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5
 
