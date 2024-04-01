@@ -32,6 +32,7 @@ This project is designed to facilitate the precise control of servo motors conne
 - **1/4 Tubes**
 - **1/4" Y Fittings**
 - **1/4" Female Three Way Tee Joint and 1/4" Male to Male Straight Hex** : To fix the pressure sensors to the hydraulic system.
+  
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/ca6718d9-69b5-4a1f-8225-fc4590b9d5d3)
 
 
