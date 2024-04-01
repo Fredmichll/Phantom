@@ -27,6 +27,9 @@ This project is designed to facilitate the precise control of servo motors conne
   
 ## Installation Instructions
 
+![image](https://github.com/Fredmichll/Phantom/assets/149977886/b1abcf5d-6205-4d93-9ffb-74ef93604898)
+
+
 ### Arduino Setup
 1. Ensure the <Servo.h> library is available in your Arduino IDE. This library is typically included by default, but if it's missing, you can download it via the Library Manager in the Arduino IDE.
 2. Connect the servo motors and sensors to their designated pins on the Arduino as specified.
