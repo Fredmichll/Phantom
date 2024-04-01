@@ -20,6 +20,7 @@ This project is designed to facilitate the precise control of servo motors conne
   Specs : 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range
   Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5
 
+
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/30a690c8-44f3-48f7-9bd7-45958f9fdedb)
 
 ### Software
@@ -34,6 +35,7 @@ This project is designed to facilitate the precise control of servo motors conne
 - **1/4 Tubes**
 - **1/4" Y Fittings**
 - **1/4" Female Three Way Tee Joint and 1/4" Male to Male Straight Hex** : To fix the pressure sensors to the hydraulic system.
+
   
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/ca6718d9-69b5-4a1f-8225-fc4590b9d5d3)
 
