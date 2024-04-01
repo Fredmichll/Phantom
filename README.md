@@ -20,6 +20,8 @@ This project is designed to facilitate the precise control of servo motors conne
   Specs : 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range
   Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5
 
+  ![image](https://github.com/Fredmichll/Phantom/assets/149977886/cf904e6f-b5e5-477a-b40d-fcd043b617e7)
+
 ### Software
 - **Arduino IDE**: For compiling and uploading the Arduino sketch.
 - **Python 3.x**: The programming environment for the interface.
@@ -34,7 +36,6 @@ This project is designed to facilitate the precise control of servo motors conne
 - **1/4" Female Three Way Tee Joint and 1/4" Male to Male Straight Hex** : To fix the pressure sensors to the hydraulic system.
   
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/ca6718d9-69b5-4a1f-8225-fc4590b9d5d3)
-
 
 ### Arduino Setup
 1. Ensure the <Servo.h> library is available in your Arduino IDE. This library is typically included by default, but if it's missing, you can download it via the Library Manager in the Arduino IDE.
