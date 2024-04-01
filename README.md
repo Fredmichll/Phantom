@@ -32,6 +32,7 @@ This project is designed to facilitate the precise control of servo motors conne
 
 ### Hydraulic Setup
 - **Pulsative-Pumps** : 2 Pulsatile Pumps P-120 from TRANDOMED for the left side and rigth side of the heart.
+  Link : https://www.trando-med.com/pulsatile-pump/top-selling-pumps/pulsatile-pump-p-120-for-driving-vascular.html
 - **1/4 Tubes**
 - **1/4" Y Fittings**
 - **1/4" Female Three Way Tee Joint and 1/4" Male to Male Straight Hex** : To fix the pressure sensors to the hydraulic system.
