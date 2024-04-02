@@ -1,49 +1,57 @@
 /*
   Variables and objects initialization 
   The servo motors are connected PWM pins
-  servo1 (PV) simulates variations in PVR and is connected to D3
-  servo2 (CR1) simulates constant resistance in the pulmonary pathway and is connected to D5
-  servo3 (CR2) simulates constant resistance in the systemic pathway and is connected to D6
+  servo1 (PV) simulates variations in PVR and is connected to D8 (Pin 9)
+  servo2 (CR1) simulates constant resistance in the pulmonary pathway and is connected to D5 (Pin 6)
+  servo3 (CR2) simulates constant resistance in the systemic pathway and is connected to D2 (Pin 3)
 
   The pressure sensors are connected to digital pins
-  Pressure Sensor 1 (P1) is connected to A0
-  Pressure Sensor 2 (P2) is connected to A1
-  Pressure Sensor 3 (P3) is connected to A2
+  Pressure Sensor 1 (P1) is connected to A0 (Pin A1)
+  Pressure Sensor 2 (P2) is connected to A1 (Pin A2)
+  Pressure Sensor 3 (P3) is connected to A2 (Pin A3)
   
   The flow sensors are connected to analog pins
-  Flow Sensor 1 (FL1) is connected to D2
-  Flow Sensor 2 (FL2) is connected to D4
-  Flow Sensor 3 (FL3) is connected to D8
+  Flow Sensor 1 (FL1) is connected to D7 (Pin 8)
+  Flow Sensor 2 (FL2) is connected to D6 (Pin 7)
+  Flow Sensor 3 (FL3) is connected to D4 (Pin 5)
 */
 
-#include <Servo.h>
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 
-Servo servo1;
-Servo servo2;
-Servo servo3;
+// Initialize the PWM driver. By default, it uses I2C address 0x40.
+Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-const int flowSensorPins[] = {2, 4, 8};
-const int pressureSensorPins[] = {A0, A1, A2};
+// Define the PWM channels for the servo motors
+#define SERVO1_PWM 0 // PV
+#define SERVO2_PWM 1 // CR1
+#define SERVO3_PWM 2 // CR2
+
+// Define the flow and pressure sensor pins
+const int flowSensorPins[] = {8, 7, 5};
+const int pressureSensorPins[] = {A1, A2, A3};
 
 // Initialize Global pulse counters for the flow sensors
-volatile int pulseCount[3] = {0, 0, 0}; // {FL1,FL2,FL3}
+volatile int pulseCountFL1 = 0; // {FL1,FL2,FL3}
+volatile int pulseCountFL2 = 0; // {FL1,FL2,FL3}
+volatile int pulseCountFL3 = 0; // {FL1,FL2,FL3}
 
-void pulseCounterFL1() {pulseCount[0]++; }
-void pulseCounterFL2() {pulseCount[1]++; }
-void pulseCounterFL3() {pulseCount[2]++; }
+void pulseCounterFL1() {pulseCountFL1++; }
+void pulseCounterFL2() {pulseCountFL2++; }
+void pulseCounterFL3() {pulseCountFL3++; }
 
 void setup() {
   // Initialize serial communication
   Serial.begin(9600);
-  
-  servo1.attach(3);
-  servo2.attach(5);
-  servo3.attach(6);
+  pwm.begin();
 
+  pwm.setPWMFreq(60);  // Servos typically run at 50-60 Hz
+  
   // Initialize the flow sensor pins as inputs
-  pinMode(flowSensorPins[0], INPUT_PULLUP); }
-  pinMode(flowSensorPins[1], INPUT_PULLUP); }
-  pinMode(flowSensorPins[2], INPUT_PULLUP); }
+  pinMode(flowSensorPins[0], INPUT_PULLUP);
+  pinMode(flowSensorPins[1], INPUT_PULLUP);
+  pinMode(flowSensorPins[2], INPUT_PULLUP);
+
   
   // Attach the interrupt service routines for the flow sensors
   attachInterrupt(digitalPinToInterrupt(flowSensorPins[0]), pulseCounterFL1, RISING);
@@ -64,7 +72,9 @@ void loop() {
 
 void readAndSendSensorData() {
   // Reset pulse counters
-  pulseCount[3] = {0, 0, 0};
+  pulseCountFL1 = 0;
+  pulseCountFL2 = 0;
+  pulseCountFL3 = 0;
   
   // Start the measurement period of 1 sec to calculate flow rates
   interrupts();
@@ -72,9 +82,9 @@ void readAndSendSensorData() {
   noInterrupts();
 
   // Send the data over Serial
-  Serial.print(readFlowSensor(pulseCount[0])); Serial.print(",");
-  Serial.print(readFlowSensor(pulseCount[1])); Serial.print(",");
-  Serial.print(readFlowSensor(pulseCount[2])); Serial.print(",");
+  Serial.print(readFlowSensor(pulseCountFL1)); Serial.print(",");
+  Serial.print(readFlowSensor(pulseCountFL2)); Serial.print(",");
+  Serial.print(readFlowSensor(pulseCountFL3)); Serial.print(",");
   Serial.print(readPressureSensor(pressureSensorPins[0])); Serial.print(",");
   Serial.print(readPressureSensor(pressureSensorPins[1])); Serial.print(",");
   Serial.println(readPressureSensor(pressureSensorPins[2]));
@@ -95,7 +105,6 @@ float readFlowSensor(int pulseCount) {
 float readPressureSensor(int pin) {
   const float Vcc = 5.0; // Power supply voltage
   const float psi_to_mmHg = 51.715; // Conversion factor from PSI to mmHg 
-
   int sensorValue = analogRead(pin); // Read the sensor value
   float voltage = sensorValue * (Vcc / 1023.0); // Convert the value to voltage
 
@@ -106,7 +115,7 @@ float readPressureSensor(int pin) {
   } else if (voltage >= 4.5) {
     psi = 30.0; // Handle error condition or above range
   } else {
-    psi = (voltage - 0.5) * 30.0 / 4.0; // Map voltage to PSI
+    psi = (voltage - 0.5) * 30.0 / (4.5 - 0.5); // Map voltage to PSI
   }
 
   return psi * psi_to_mmHg; // Convert PSI to mmHg and return
@@ -124,10 +133,10 @@ void adjustServosAndConditions(String conditions) {
   int servo2Pos = conditions.substring(firstComma + 1, secondComma).toInt();
   int servo3Pos = conditions.substring(secondComma + 1, thirdComma).toInt();
 
-  // Convert percentage to servo angle (0-100% -> 0-90 degrees for full range, adjust as necessary)
-  // technically each 1% change in input corresponds to a 0.9-degree change but all the values are 
-  // int they are rounded to nearest integer
-  servo1.write(map(servo1Pos, 0, 100, 0, 90));
-  servo2.write(map(servo2Pos, 0, 100, 0, 90));
-  servo3.write(map(servo3Pos, 0, 100, 0, 90));
+  // Convert percentage to servo angle (0-100% -> 0-90 degrees)
+  // Each servo motors have their own pulselength values to reach angles between 0 and 90 degrees
+  // Map from % to PWM pulse length count
+  pwm.setPWM(SERVO1_PWM, 0, map(servo1Pos, 0, 100, 370, 520)); // for PV : 370 count equals an angle of 0 and a 520 count is an angle of 90
+  pwm.setPWM(SERVO2_PWM, 0, map(servo2Pos, 0, 100, 150, 290)); // for CR1 : 150 count equals an angle of 0 and a 290 count is an angle of 90
+  pwm.setPWM(SERVO3_PWM, 0, map(servo3Pos, 0, 100, 260, 410)); // for CR2 : 260 count equals an angle of 0 and a 410 count is an angle of 90
 }
