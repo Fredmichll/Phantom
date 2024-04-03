@@ -90,12 +90,6 @@ The beta run option allows for testing and adjusting servo positions without aff
 #### 4. Exit
 Selecting this option closes the user interface and ends the session.
 
-### Running the Python Script
-- Launch a terminal or command prompt.
-- Navigate to the directory containing `Phantom_UI.py`.
-- Start the script by typing `python Phantom_UI.py` into the terminal.
-- Use the on-screen prompts to select the Arduino's COM port, modify servo motor positions, and trigger the simulated sensor data recording and tabulation.
-
 ## Features
 - **Adjustable Servo Motor Control**: Offers the capability for users to input preferred servo positions, altering the system's physical configuration on demand.
 - **Sensor Data Recording**: Automatically records and tabulates data from flow and pressure sensors, vital for the real-time observation and analysis of the system's operation.
