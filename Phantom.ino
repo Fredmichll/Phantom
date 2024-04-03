@@ -16,7 +16,6 @@
   Flow Sensor 3 (FL3) is connected to D4 (Pin 5)
 */
 
-#include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
 // Initialize the PWM driver. By default, it uses I2C address 0x40.
@@ -81,13 +80,26 @@ void readAndSendSensorData() {
   delay(1000);
   noInterrupts();
 
+  float flow1 = readFlowSensor(pulseCountFL1);
+  float flow2 = readFlowSensor(pulseCountFL2);
+  float flow3 = readFlowSensor(pulseCountFL3);
+  float pressure1 = readPressureSensor(pressureSensorPins[0]);
+  float pressure2 = readPressureSensor(pressureSensorPins[1]);
+  float pressure3 = readPressureSensor(pressureSensorPins[2]);
+
+  // Validate and correct flow rates
+  flow1 = (flow1 >= 0) ? flow1 : 0;
+  flow2 = (flow2 >= 0) ? flow2 : 0;
+  flow3 = (flow3 >= 0) ? flow3 : 0;
+
+  // Validate and correct pressure values
+  pressure1 = (pressure1 >= 0) ? pressure1 : 0;
+  pressure2 = (pressure2 >= 0) ? pressure2 : 0;
+  pressure3 = (pressure3 >= 0) ? pressure3 : 0;
+
   // Send the data over Serial
-  Serial.print(readFlowSensor(pulseCountFL1)); Serial.print(",");
-  Serial.print(readFlowSensor(pulseCountFL2)); Serial.print(",");
-  Serial.print(readFlowSensor(pulseCountFL3)); Serial.print(",");
-  Serial.print(readPressureSensor(pressureSensorPins[0])); Serial.print(",");
-  Serial.print(readPressureSensor(pressureSensorPins[1])); Serial.print(",");
-  Serial.println(readPressureSensor(pressureSensorPins[2]));
+  Serial.println(String(flow1) + "," + String(flow2) + "," + String(flow3) + "," + String(pressure1) + "," + String(pressure2) + "," + String(pressure3));
+
 }
 
   /*
