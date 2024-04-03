@@ -30,8 +30,7 @@ This project is designed to facilitate the precise control of servo motors conne
   
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/fe1bf998-b674-4a97-bbc9-5824daf53194)
 
-<center><b>Figure 1: Detailed Arduino Hardware Configuration</b></center>
-
+<div style="text-align: center;"><b>Figure 1: Detailed Arduino Hardware Configuration</b></div>
 
 ### Software
 - **Arduino IDE**: For compiling and uploading the Arduino sketch.
