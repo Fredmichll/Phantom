@@ -60,7 +60,35 @@ This project is designed to facilitate the precise control of servo motors conne
 1. Confirm that Python 3.x is installed on your computer.
 2. Install the pyserial package at the same location at VSC folder using the command: `pip install pyserial`.
 
-## Usage
+# Instructions
+
+### Getting Started
+1. **Setup Connection**: Ensure your Arduino is connected to your computer via a USB cable. Note the COM port it's connected to (visible in the Arduino IDE or your computer's device manager).
+
+2. **Launch Python UI**: Navigate to the folder containing the Python script (`Python_capstone.py`) using a terminal or command prompt. Run the script by entering `python Python_capstone.py`.
+
+3. **Select COM Port**: Upon running the Python script, you'll be prompted to select the COM port to which your Arduino is connected. Enter the corresponding number.
+
+### Operating Instructions
+The Python user interface provides several options to interact with the hardware:
+
+#### 1. Get Sensor Readings
+Select this option to request current flow and pressure sensor readings from the Arduino. The system will output the readings in a formatted table, showing values for each flow and pressure sensor.
+
+#### 2. Update Inputted Conditions
+This option allows you to adjust the openness of the servo motors (valves) and set other conditions such as pump rates and fluid temperature. Upon selection:
+
+- Enter the desired percentage of openness for each servo (PV and CR2 must be within 10-100%, while CR1 can range from 0-100%).
+- Enter the desired rates for the left and right pumps in L/min.
+- Set the fluid temperature in Celsius.
+
+Once submitted, these conditions will be sent to the Arduino, adjusting the servo positions accordingly. The updated conditions and the resulting servo positions are then logged in the output file.
+
+#### 3. Beta Run
+The beta run option allows for testing and adjusting servo positions without affecting the system's main operation. It's useful for calibration or testing new configurations. Like updating conditions, changes made during a beta run are logged separately for review.
+
+#### 4. Exit
+Selecting this option closes the user interface and ends the session.
 
 ### Running the Python Script
 - Launch a terminal or command prompt.
