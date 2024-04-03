@@ -9,23 +9,23 @@ This project is designed to facilitate the precise control of servo motors conne
 ## Requirements
 
 ### Hardware
-- **Arduino Uno** //
-  Link : https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=undefined&selectedStore=us
-- **Grove Base Shield V2.0 for Arduino**
-  Link : https://store-usa.arduino.cc/products/grove-base-shield-v2-0-for-arduino
-- **Grove Universal 4 Pin** : The heads of the flow sensors and pressure sensors must be changed to be connectable to the Grove Base shield
-  Link : NGW-Universal 4 Pin to Beaglebone Blue 4 Pin Female JST/SH Conversion Cable (10 pcs Pack) for Grove [on Amazon] 
-- **3 Servo Motors (PV, CR1, CR2)**: For simulating variations in physical parameters, connected to PWM pins D3 (Servo 1), D5 (Servo 2), and D6 (Servo 3).
-  Specs : FR5311M Digital Servo / Operating Voltage: 4.8V-8.4V / 13.8 kg-cm (7.4V)
-  Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
-- **Adafruit  PCA9685 16-Channel Servo Driver**: Control the servo motors and allow the use of external power supply (7.4 V)
-  Link : https://www.adafruit.com/product/815
-- **Flow Sensors (FL1, FL2, FL3)**: Connected to digital pins D2, D4, and D8 for flow rate monitoring.
-  Specs : YF-S401 / 0.3-6 L/min / ±5% FS / 5880 pulses/L 
-  Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
-- **Pressure Sensors (P1, P2, P3)**: Connected to analog pins A0, A1, and A2 for pressure measurement.
-  Specs : 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range
-  Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5
+- **Arduino Uno**  
+  Link: [Arduino Uno Rev3](https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=undefined&selectedStore=us)
+- **Grove Base Shield V2.0 for Arduino**  
+  Link: [Grove Base Shield V2.0 for Arduino](https://store-usa.arduino.cc/products/grove-base-shield-v2-0-for-arduino)
+- **Grove Universal 4 Pin**: The heads of the flow sensors and pressure sensors must be changed to be connectable to the Grove Base shield  
+  Link: [NGW-Universal 4 Pin to Beaglebone Blue 4 Pin Female JST/SH Conversion Cable (10 pcs Pack) for Grove on Amazon](#) 
+- **3 Servo Motors (PV, CR1, CR2)**: For simulating variations in physical parameters, connected to PWM pins D3 (Servo 1), D5 (Servo 2), and D6 (Servo 3).  
+  Specs: FR5311M Digital Servo / Operating Voltage: 4.8V-8.4V / 13.8 kg-cm (7.4V)  
+  Link: [FR5311M Digital Servo](https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html)
+- **Adafruit PCA9685 16-Channel Servo Driver**: Control the servo motors and allow the use of external power supply (7.4 V)  
+  Link: [Adafruit PCA9685 16-Channel Servo Driver](https://www.adafruit.com/product/815)
+- **Flow Sensors (FL1, FL2, FL3)**: Connected to digital pins D2, D4, and D8 for flow rate monitoring.  
+  Specs: YF-S401 / 0.3-6 L/min / ±5% FS / 5880 pulses/L   
+  Link: [YF-S401 Flow Sensor](https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html)
+- **Pressure Sensors (P1, P2, P3)**: Connected to analog pins A0, A1, and A2 for pressure measurement.  
+  Specs: 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range  
+  Link: [0-10 PSI Pressure Transducer](https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5)
 - **DC Power supply**
   
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/fe1bf998-b674-4a97-bbc9-5824daf53194)
