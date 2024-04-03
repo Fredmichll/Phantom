@@ -9,7 +9,7 @@ This project is designed to facilitate the precise control of servo motors conne
 ## Requirements
 
 ### Hardware
-- **Arduino Uno**
+- **Arduino Uno** //
   Link : https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=undefined&selectedStore=us
 - **Grove Base Shield V2.0 for Arduino**
   Link : https://store-usa.arduino.cc/products/grove-base-shield-v2-0-for-arduino
