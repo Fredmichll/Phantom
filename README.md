@@ -15,7 +15,7 @@ This project is designed to facilitate the precise control of servo motors conne
   Link: [Grove Base Shield V2.0 for Arduino](https://store-usa.arduino.cc/products/grove-base-shield-v2-0-for-arduino)
 - **Grove Universal 4 Pin**: The heads of the flow sensors and pressure sensors must be changed to be connectable to the Grove Base shield  
   Link: [NGW-Universal 4 Pin to Beaglebone Blue 4 Pin Female JST/SH Conversion Cable (10 pcs Pack) for Grove on Amazon](#) 
-- **3 Servo Motors**: For simulating variations in physical parameters, connected to PWM groves at D8 (Servo PV), at D5 (Servo CR1), and D2 (Servo CR2).  
+- **3 Servo Motors**: For simulating variations in physical parameters, connected to PWM groves at D8 (Servo PV) , at D5 (Servo CR1) , and D2 (Servo CR2).  
   Specs: FR5311M Digital Servo / Operating Voltage: 4.8V-8.4V / 13.8 kg-cm (7.4V)  
   Link: [FR5311M Digital Servo](https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html)
 - **Adafruit PCA9685 16-Channel Servo Driver**: Control the servo motors and allow the use of external power supply (7.4 V)  
