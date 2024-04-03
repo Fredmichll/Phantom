@@ -10,18 +10,27 @@ This project is designed to facilitate the precise control of servo motors conne
 
 ### Hardware
 - **Arduino Uno**
+  Link : https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=undefined&selectedStore=us
+- **Grove Base Shield V2.0 for Arduino**
+  Link : https://store-usa.arduino.cc/products/grove-base-shield-v2-0-for-arduino
+- **Grove Universal 4 Pin** : The heads of the flow sensors and pressure sensors must be changed to be connectable to the Grove Base shield
+  Link : NGW-Universal 4 Pin to Beaglebone Blue 4 Pin Female JST/SH Conversion Cable (10 pcs Pack) for Grove [on Amazon] 
 - **3 Servo Motors (PV, CR1, CR2)**: For simulating variations in physical parameters, connected to PWM pins D3 (Servo 1), D5 (Servo 2), and D6 (Servo 3).
   Specs : FR5311M Digital Servo / Operating Voltage: 4.8V-8.4V / 13.8 kg-cm (7.4V)
   Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
+- **Adafruit  PCA9685 16-Channel Servo Driver**: Control the servo motors and allow the use of external power supply (7.4 V)
+  Link : https://www.adafruit.com/product/815
 - **Flow Sensors (FL1, FL2, FL3)**: Connected to digital pins D2, D4, and D8 for flow rate monitoring.
   Specs : YF-S401 / 0.3-6 L/min / ±5% FS / 5880 pulses/L 
   Link : https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html
 - **Pressure Sensors (P1, P2, P3)**: Connected to analog pins A0, A1, and A2 for pressure measurement.
   Specs : 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range
   Link : https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5
+- **DC Power supply**
+  
+![image](https://github.com/Fredmichll/Phantom/assets/149977886/fe1bf998-b674-4a97-bbc9-5824daf53194)
 
-## (To be changed)
-![image](https://github.com/Fredmichll/Phantom/assets/149977886/30a690c8-44f3-48f7-9bd7-45958f9fdedb)
+**Figure 1: Detailed Arduino Hardware Configuration**
 
 ### Software
 - **Arduino IDE**: For compiling and uploading the Arduino sketch.
@@ -37,12 +46,13 @@ This project is designed to facilitate the precise control of servo motors conne
 - **1/4" Y Fittings**
 - **1/4" Female Three Way Tee Joint and 1/4" Male to Male Straight Hex** : To fix the pressure sensors to the hydraulic system.
 
-  
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/ca6718d9-69b5-4a1f-8225-fc4590b9d5d3)
 
+**Figure 2: Hydraulic Configuration**
+
 ### Arduino Setup
-1. Ensure the <Servo.h> library is available in your Arduino IDE. This library is typically included by default, but if it's missing, you can download it via the Library Manager in the Arduino IDE.
-2. Connect the servo motors and sensors to their designated pins on the Arduino as specified.
+1. Ensure the <Adafruit_PWMServoDriver.h> library is available in your Arduino IDE to manage the I2C communications with the servo driver hardware.
+2. Connect the servo motors and sensors to their designated pins on the Arduino as specified in the code and 
 3. Open the Phantom.ino sketch in the Arduino IDE.
 4. Compile and upload the sketch to your Arduino board.
    
