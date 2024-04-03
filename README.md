@@ -20,10 +20,10 @@ This project is designed to facilitate the precise control of servo motors conne
   Link: [FR5311M Digital Servo](https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html)
 - **Adafruit PCA9685 16-Channel Servo Driver**: Control the servo motors and allow the use of external power supply (7.4 V)  
   Link: [Adafruit PCA9685 16-Channel Servo Driver](https://www.adafruit.com/product/815)
-- **Flow Sensors**: Connected to digital groves D7 (FL1), D6 (FL2), and D4 (FL3) for flow rate monitoring.  
+- **Flow Sensors**: Connected to digital groves D7 (FL1) , D6 (FL2) , and D4 (FL3) for flow rate monitoring.  
   Specs: YF-S401 / 0.3-6 L/min / ±5% FS / 5880 pulses/L   
   Link: [YF-S401 Flow Sensor](https://abra-electronics.com/sensors/sensors-liquid-flow/sen0216-gravity-digital-water-flow-sensor-for-arduino-1-8.html)
-- **Pressure Sensors**: Connected to analog groves A0 (P1), A1 (P2), and A2 (P3) for pressure measurement.  
+- **Pressure Sensors**: Connected to analog groves A0 (P1) , A1 (P2) , and A2 (P3) for pressure measurement.  
   Specs: 0-10 PSI range and 5V DC Input / 0.5% FS / 0.5 V - 4.5 V Optimal Range  
   Link: [0-10 PSI Pressure Transducer](https://snapklik.com/en-ca/product/pressure-transducer-stainless-pressure-transducer-5-psi-pressure-transducer-sensor-10-psi-steel-pressure-sender-sensor-g1-4-for-oil-tank-gas-tank-and-tank-0-10psi-0-10psi/0P2P4PL7318L5)
 - **DC Power supply**
