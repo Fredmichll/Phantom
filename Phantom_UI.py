@@ -52,18 +52,34 @@ def request_sensor_data():
     while ser.in_waiting <= 0:
         time.sleep(0.1)
     data = ser.readline().decode().strip()
-    return data
+    return data 
 
-def update_conditions(servo1, servo2, servo3, pump_rate_left, pump_rate_right, fluid_temp):
+def update_conditions(conditions):
+    # Unpack the conditions
+    servo1, servo2, servo3, pump_rate_left, pump_rate_right, fluid_temp = conditions
+
+    # Convert servo positions from float to integer if necessary
+    servo1 = int(servo1)
+    servo2 = int(servo2)
+    servo3 = int(servo3)
+
+    # Construct the command string with all conditions, including servo positions
     command = f"{servo1},{servo2},{servo3},{pump_rate_left},{pump_rate_right},{fluid_temp}\n"
+    
+    # Send the command to Arduino
     ser.write(command.encode())
-    return servo1, servo2, servo3, pump_rate_left, pump_rate_right, fluid_temp
+    ser.flush()  # Ensure the command is processed
+    time.sleep(1)  # Wait for the Arduino to respond
+
+    # Attempt to read the response from Arduino
+    response = ser.readline().decode().strip()
+    print(f"Arduino response: {response}")
 
 def collect_and_send_conditions():
     inputs = {
-        "Enter servo PV position (0-100%)": None,
+        "Enter servo PV position (10-100%)": None,  # Note the change in prompt
         "Enter servo CR1 position (0-100%)": None,
-        "Enter servo CR2 position (0-100%)": None,
+        "Enter servo CR2 position (10-100%)": None,  # Note the change in prompt
         "Enter left pump rate (L/min)": None,
         "Enter right pump rate (L/min)": None,
         "Enter fluid temperature in Celsius": None
@@ -75,13 +91,20 @@ def collect_and_send_conditions():
             try:
                 value = float(user_input)  # Attempt to convert input to float
                 
-                # Check for servo positions to be within 0-100%
-                if "position" in prompt and not (0 <= value <= 100):
-                    print("Error: Servo position must be between 0 and 100%.")
-                    continue
+                # Special check for servo PV and CR2 positions to be within 10-100%
+                if "PV position" in prompt or "CR2 position" in prompt:
+                    if not (10 <= value <= 100):
+                        print("Error: Servo PV and CR2 positions must be between 10 and 100%.")
+                        continue
+                
+                # Check for servo CR1 positions to be within 0-100%
+                elif "CR1 position" in prompt:
+                    if not (0 <= value <= 100):
+                        print("Error: Servo CR1 position must be between 0 and 100%.")
+                        continue
                 
                 # Check for pump rates and fluid temperature to be positive
-                if ("rate" in prompt or "temperature" in prompt) and value < 0:
+                elif ("rate" in prompt or "temperature" in prompt) and value < 0:
                     print("Error: Pump rates and fluid temperature must be positive.")
                     continue
                 
@@ -125,37 +148,28 @@ def format_table(conditions, sensor_data=",,,,,"):
     return output
 
 def beta_run(conditions):
-    # Explicitly convert each condition to an integer value for servo openness
-    servo1 = int(conditions[0])
-    servo2 = int(conditions[1])
-    servo3 = int(conditions[2])
-    
-    # Construct the command string with servo positions
-    command = f"{servo1},{servo2},{servo3}\n"
-    
-    # Send the command to Arduino
-    ser.write(command.encode())
-    ser.flush()  # Ensure the command is processed
-    time.sleep(1)  # Wait for the Arduino to respond
-    
-    # Attempt to read the response from Arduino
-    response = ser.readline().decode().strip()
-    print(f"Arduino response: {response}")
-    
+
+    update_conditions(conditions)
+
     # Generate and print the table with current conditions
-    output = format_table((servo1, servo2, servo3, conditions[3], conditions[4], conditions[5]), '-,-,-,-,-,-')
+    output = format_table((int(conditions[0]), int(conditions[1]), int(conditions[2]), float(conditions[3]), float(conditions[4]), float(conditions[5])), '-,-,-,-,-,-')
     print(output)
-    
+
     # Define the beta output filename
     script_dir = os.path.dirname(os.path.realpath(__file__))
     beta_filename = os.path.join(script_dir, datetime.now().strftime("Beta Output - %Y-%m-%d - %Hh%Mm%Ss.txt"))
 
-    return output
+    # Log the output to the beta-specific file
+    with open(beta_filename, "a") as file:
+        file.write(output + "\n")
 
 
 def main():
     # Setup initial conditions
     conditions = collect_and_send_conditions()
+
+    # initialize the positions of the servo motors
+    update_conditions(conditions)
 
     # Get the directory of the current script
     script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -185,13 +199,15 @@ def main():
         elif user_choice == '2':
             # Update conditions
             conditions = collect_and_send_conditions()
+            update_conditions(conditions)
+            output = format_table(conditions)
+            with open(filename, "a") as file:
+                file.write(output + "\n")
             print("Conditions updated successfully!")
             print()
         elif user_choice == '3':
             # Beta run
-            output = beta_run(conditions)
-            with open(filename, "a") as file:
-                file.write(output + "\n")
+            beta_run(conditions)
             print("Beta run executed successfully!")
             print()
         elif user_choice == '4':
