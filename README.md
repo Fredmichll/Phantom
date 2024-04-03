@@ -30,7 +30,7 @@ This project is designed to facilitate the precise control of servo motors conne
   
 ![image](https://github.com/Fredmichll/Phantom/assets/149977886/fe1bf998-b674-4a97-bbc9-5824daf53194)
 
-<div style="text-align: center;"><b>Figure 1: Detailed Arduino Hardware Configuration</b></div>
+**Figure 1: Detailed Arduino Hardware Configuration**
 
 ### Software
 - **Arduino IDE**: For compiling and uploading the Arduino sketch.
@@ -72,12 +72,13 @@ This project is designed to facilitate the precise control of servo motors conne
 - **Adjustable Servo Motor Control**: Offers the capability for users to input preferred servo positions, altering the system's physical configuration on demand.
 - **Sensor Data Recording**: Automatically records and tabulates data from flow and pressure sensors, vital for the real-time observation and analysis of the system's operation.
 - **User-Friendly Interface**: The Python script provides a simple menu-driven interface for system control and sensor data recording.
-- **Comprehensive Data Logging**: The system logs all user inputs, the COM port used for communication, and outputs, including timestamps, servo positions, and simulated sensor readings, into a tabulated format       in a text file. This detailed logging, which includes the specific COM port utilized for the session, continues until the user exits the code, facilitating thorough post-execution review and analysis.
+- **Comprehensive Data Logging**: The system logs all user inputs, the COM port used for communication, and outputs, including timestamps, servo positions, and simulated sensor readings, into a tabulated format in a text file. This detailed logging, which includes the specific COM port utilized for the session, continues until the user exits the code, facilitating thorough post-execution review and analysis.
   
 ## Troubleshooting
 - Verify that the Arduino is connected to the chosen COM port as indicated in the Python script.
 - Ensure all physical connections are secure, particularly the sensors and servos to their corresponding pins.
 - Check that the `pyserial` library is correctly installed in your Python environment and is accessible.
+- To ensure precise control over your servo motors, especially when setting them to specific positions such as 0 and 90 degrees, or scaling their movement from 0 to 100%, it's essential to calibrate the pulse lengths for these positions. This calibration is necessary due to slight variations in servo models and units. Calibration can be achieved through trial and error by using a simple sketch we refer to as `servo_calibration`. This sketch enables you to input different pulse lengths and observe the servo's response, helping you pinpoint the exact pulse length needed for your desired positions.
 
 ## License
 This project is shared under the MIT License. Refer to the LICENSE file for more detailed information.
