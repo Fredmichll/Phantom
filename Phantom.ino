@@ -1,9 +1,9 @@
 /*
   Variables and objects initialization 
   The servo motors are connected PWM pins
-  servo1 (PV) simulates variations in PVR and is connected to D8 (Pin 9)
-  servo2 (CR1) simulates constant resistance in the pulmonary pathway and is connected to D5 (Pin 6)
-  servo3 (CR2) simulates constant resistance in the systemic pathway and is connected to D2 (Pin 3)
+  servo1 (PV) simulates variations in PVR 
+  servo2 (CR1) simulates constant resistance in the pulmonary pathway
+  servo3 (CR2) simulates constant resistance in the systemic pathway
 
   The pressure sensors are connected to digital pins
   Pressure Sensor 1 (P1) is connected to A0 (Pin A1)
